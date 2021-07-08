@@ -15,22 +15,16 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState("");
 
   function handleCreateNewTask() {
-    const id = Date.now();
-    const title = newTaskTitle;
-    const isComplete = false;
+    if (!newTaskTitle) return;
 
-    const newTask = [
-      ...tasks,
-      {
-        id,
-        title,
-        isComplete,
-      },
-    ];
+    const newTask = {
+      id: Date.now(),
+      title: newTaskTitle,
+      isComplete: false,
+    };
 
-    if (newTaskTitle.trim()) {
-      setTasks(newTask);
-    }
+    setTasks((oldState) => [...oldState, newTask]);
+    setNewTaskTitle("");
   }
 
   function handleToggleTaskCompletion(id: number) {
