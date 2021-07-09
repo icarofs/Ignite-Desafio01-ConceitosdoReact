@@ -28,8 +28,6 @@ export function TaskList() {
   }
 
   function handleToggleTaskCompletion(id: number) {
-    const index = tasks.findIndex((indexById) => indexById.id === id);
-
     const newArrayTasks = tasks.map((task) =>
       task.id === id
         ? {
